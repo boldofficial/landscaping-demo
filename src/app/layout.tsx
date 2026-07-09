@@ -35,7 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${merriweather.variable} antialiased flex flex-col min-h-screen`}>
         <Header />
-        <main className="flex-grow pt-24">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />
