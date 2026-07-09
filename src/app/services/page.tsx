@@ -14,8 +14,18 @@ export const metadata: Metadata = pageMetadata({
 export default function ServicesPage() {
   return (
     <div className="bg-background pb-24">
-      <section className="bg-primary py-24 text-white">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="relative min-h-[52vh] overflow-hidden bg-primary text-white">
+        <Image
+          src="/images/services/landscape_design.png"
+          alt="Layered residential landscape design with lawn, garden beds, stone paths, and mature plantings"
+          fill
+          className="object-cover opacity-55"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-primary/20" />
+
+        <div className="container relative z-10 mx-auto px-6 py-28 md:px-12 md:py-36">
           <AnimatedSection className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl font-serif font-bold text-balance">
               Landscaping services for Madison yards that need a practical plan.
