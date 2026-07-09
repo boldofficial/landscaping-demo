@@ -20,40 +20,61 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const primaryNavLinks = navLinks.filter((link) => link.path !== "/contact");
+
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-[background-color,box-shadow,padding,backdrop-filter] duration-300 ${
-        isScrolled ? "glass shadow-sm py-4" : "bg-transparent py-6"
-      }`}
+      className="pointer-events-none fixed inset-x-0 top-4 z-50 px-4"
     >
-      <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-3">
-          <Image src="/images/logo.png" alt={`${business.shortName} logo`} width={80} height={80} className="w-20 h-20 object-contain" />
-          <div className="text-2xl font-serif font-bold text-primary tracking-tight">
+      <div className="mx-auto flex max-w-6xl items-start justify-between gap-4">
+        <Link
+          href="/"
+          className={`pointer-events-auto group flex items-center gap-3 rounded-full border border-white/70 bg-white/90 py-2 pl-2 pr-5 shadow-lg shadow-black/10 backdrop-blur-md transition-[background-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 ${
+            isScrolled ? "shadow-xl" : ""
+          }`}
+        >
+          <Image src="/images/logo.png" alt={`${business.shortName} logo`} width={64} height={64} className="h-14 w-14 object-contain" />
+          <div className="hidden text-xl font-serif font-bold tracking-tight text-primary sm:block">
             Friendly <span className="font-light text-primary-light">Landscaping</span>
           </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-8 items-center">
-          {navLinks.map((link) => (
+        <nav
+          aria-label="Primary navigation"
+          className={`pointer-events-auto hidden items-center gap-1 rounded-full border border-white/70 bg-secondary/90 p-2 shadow-lg shadow-black/10 backdrop-blur-md transition-[background-color,box-shadow,transform] duration-300 lg:flex ${
+            isScrolled ? "shadow-xl" : ""
+          }`}
+        >
+          {primaryNavLinks.map((link) => (
             <Link
               key={link.path}
               href={link.path}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                pathname === link.path ? "text-primary border-b-2 border-primary" : "text-gray-600"
+              className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                pathname === link.path
+                  ? "bg-primary text-white"
+                  : "text-primary/80 hover:bg-white/70 hover:text-primary"
               }`}
             >
               {link.name}
             </Link>
           ))}
+          <Link
+            href="/contact"
+            className={`ml-1 whitespace-nowrap rounded-full px-5 py-2 text-sm font-bold transition-colors ${
+              pathname === "/contact"
+                ? "bg-primary text-white"
+                : "bg-accent text-primary hover:bg-white"
+            }`}
+          >
+            Quote
+          </Link>
         </nav>
 
-        {/* Mobile Nav Toggle */}
         <button
-          className="md:hidden text-gray-800"
+          className="pointer-events-auto rounded-full border border-white/70 bg-white/90 p-4 text-primary shadow-lg shadow-black/10 backdrop-blur-md lg:hidden"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle Menu"
+          aria-expanded={mobileMenuOpen}
         >
           <svg
             className="w-6 h-6"
@@ -70,23 +91,22 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-white/20 overflow-hidden"
+            className="pointer-events-auto mx-auto mt-3 max-w-sm overflow-hidden rounded-3xl border border-white/70 bg-white/95 shadow-xl shadow-black/15 backdrop-blur-md lg:hidden"
           >
-            <div className="flex flex-col px-6 py-4 space-y-4">
+            <div className="grid gap-2 p-3">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`text-lg font-medium ${
-                    pathname === link.path ? "text-primary" : "text-gray-600"
+                  className={`rounded-2xl px-4 py-3 text-base font-semibold ${
+                    pathname === link.path ? "bg-primary text-white" : "text-primary hover:bg-secondary"
                   }`}
                 >
                   {link.name}
