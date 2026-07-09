@@ -3,13 +3,14 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { business, navLinks } from "@/lib/site-content";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const reduceMotion = useReducedMotion();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -33,7 +34,15 @@ export default function Header() {
             isScrolled ? "shadow-xl" : ""
           }`}
         >
-          <Image src="/images/logo.png" alt={`${business.shortName} logo`} width={64} height={64} className="h-14 w-14 object-contain" />
+          <motion.div
+            className="h-14 w-14 origin-bottom will-change-transform"
+            initial={reduceMotion ? false : { rotate: -4, scale: 0.92, y: 3 }}
+            animate={reduceMotion ? undefined : { rotate: [-4, 3, -2, 0], scale: [0.92, 1.06, 0.98, 1], y: [3, -3, 1, 0] }}
+            transition={reduceMotion ? undefined : { duration: 1.1, ease: "easeOut", times: [0, 0.35, 0.7, 1] }}
+            whileHover={reduceMotion ? undefined : { rotate: [0, -8, 6, -3, 0], scale: 1.06, y: [0, -3, 0] }}
+          >
+            <Image src="/images/logo.png" alt={`${business.shortName} logo`} width={64} height={64} className="h-14 w-14 object-contain" />
+          </motion.div>
           <div className="hidden text-xl font-serif font-bold tracking-tight text-primary sm:block">
             Friendly <span className="font-light text-primary-light">Landscaping</span>
           </div>
