@@ -110,18 +110,17 @@ export default function Home() {
             </p>
           </AnimatedSection>
 
-          <div className="mt-12 grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
             {featuredServices.map((service, index) => (
               <AnimatedSection
                 key={service.id}
                 delay={index * 0.05}
-                className={index === 0 ? "lg:col-span-2" : ""}
               >
                 <Link
                   href="/services"
                   className="group block h-full overflow-hidden rounded-xl border border-gray-100 bg-white shadow-sm transition-shadow hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
-                  <div className={index === 0 ? "relative h-72" : "relative h-44"}>
+                  <div className="relative h-56 md:h-64">
                     <Image
                       src={service.image}
                       alt={service.alt}
