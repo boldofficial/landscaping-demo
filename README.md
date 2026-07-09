@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Friendly Landscaping
 
-## Getting Started
+Static Next.js site for Friendly Landscaping LLC, a Madison-area landscaping and hardscaping business.
 
-First, run the development server:
+## Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build and Verify
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+npm run verify:export
+```
 
-## Learn More
+The project uses `output: 'export'`, so production files are generated in `out/`. The verification script checks for core exported pages, `sitemap.xml`, `robots.txt`, stale generated routes, missing page metadata, and internal links that point to missing exports.
 
-To learn more about Next.js, take a look at the following resources:
+## Site URL
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+SEO metadata, canonical URLs, sitemap URLs, and JSON-LD use:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+NEXT_PUBLIC_SITE_URL=https://www.friendlylandscapingllc.com
+```
 
-## Deploy on Vercel
+Set this environment variable to the real production domain before deployment if the domain differs.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact Path
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The site currently routes quote requests to the known phone number, `(608) 481-9571`. Do not add a success-state contact form until a real static-compatible provider is configured, such as a form service, CRM endpoint, or hosted email workflow.
+
+## Content Source
+
+Public business facts, services, blog posts, portfolio items, and shared route data live in `src/lib/site-content.ts`. Update that file first when changing service names, phone number, service area, metadata, sitemap entries, or structured data.
