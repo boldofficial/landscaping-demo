@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
-import { business, pageMetadata, services } from "@/lib/site-content";
+import HeroBrand from "@/components/HeroBrand";
+import { pageMetadata, services } from "@/lib/site-content";
 
 export const metadata: Metadata = pageMetadata({
   title: "Friendly Landscaping LLC | Madison Landscape Design, Patios & Drainage",
@@ -28,21 +29,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/75 to-primary/20" />
 
         <div className="container absolute inset-x-0 top-4 z-20 mx-auto px-6 md:px-12">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-3 pr-3 transition-transform duration-300 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
-          >
-            <Image
-              src="/images/logo.png"
-              alt={`${business.shortName} logo`}
-              width={112}
-              height={112}
-              className="h-20 w-20 object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)] md:h-28 md:w-28"
-            />
-            <div className="hidden font-serif text-2xl font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] sm:block md:text-3xl">
-              Friendly <span className="font-light text-secondary">Landscaping</span>
-            </div>
-          </Link>
+          <HeroBrand />
         </div>
 
         <div className="container relative z-10 mx-auto px-6 md:px-12 py-24 md:py-32">
