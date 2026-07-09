@@ -110,7 +110,7 @@ export default function Home() {
               <AnimatedSection
                 key={service.id}
                 delay={index * 0.05}
-                className={index === 0 ? "lg:col-span-2 lg:row-span-2" : ""}
+                className={index === 0 ? "lg:col-span-2" : ""}
               >
                 <Link
                   href="/services"
