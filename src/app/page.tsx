@@ -153,7 +153,7 @@ export default function Home() {
       </section>
 
       <section className="overflow-hidden bg-primary-light py-20 text-white md:py-24">
-        <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-6 md:px-12 lg:grid-cols-[minmax(0,1fr)_20rem]">
+        <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-6 md:px-12 lg:grid-cols-[minmax(0,64rem)_18rem_minmax(0,1fr)]">
           <AnimatedSection className="max-w-3xl">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-balance">
               Ready to talk through the yard?
@@ -168,7 +168,7 @@ export default function Home() {
               Request a Quote
             </Link>
           </AnimatedSection>
-          <AnimatedSection delay={0.1} className="hidden justify-self-center md:block">
+          <AnimatedSection delay={0.1} className="hidden justify-self-center md:block lg:col-start-2">
             <AnimatedLogo
               className="h-56 w-56 drop-shadow-[0_20px_35px_rgba(0,0,0,0.22)] lg:h-72 lg:w-72"
               imageClassName="h-56 w-56 lg:h-72 lg:w-72"
