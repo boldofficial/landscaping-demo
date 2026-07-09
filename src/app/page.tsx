@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedSection from "@/components/AnimatedSection";
+import AnimatedLogo from "@/components/AnimatedLogo";
 import HeroBrand from "@/components/HeroBrand";
 import { pageMetadata, services } from "@/lib/site-content";
 
@@ -151,8 +152,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-primary-light py-20 md:py-24 text-white">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="overflow-hidden bg-primary-light py-20 text-white md:py-24">
+        <div className="container mx-auto grid grid-cols-1 items-center gap-12 px-6 md:px-12 lg:grid-cols-[minmax(0,1fr)_22rem]">
           <AnimatedSection className="max-w-3xl">
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-balance">
               Ready to talk through the yard?
@@ -166,6 +167,12 @@ export default function Home() {
             >
               Request a Quote
             </Link>
+          </AnimatedSection>
+          <AnimatedSection delay={0.1} className="hidden justify-self-end md:block">
+            <AnimatedLogo
+              className="h-56 w-56 drop-shadow-[0_20px_35px_rgba(0,0,0,0.22)] lg:h-72 lg:w-72"
+              imageClassName="h-56 w-56 lg:h-72 lg:w-72"
+            />
           </AnimatedSection>
         </div>
       </section>
